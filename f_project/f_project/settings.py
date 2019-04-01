@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'f_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'f_project',
+        'NAME': 'films',
         'HOST': '120.79.219.2',
         'USER': 'root',
         'PASSWORD': '123456',
