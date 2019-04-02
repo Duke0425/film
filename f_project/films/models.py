@@ -10,6 +10,7 @@ from django.db import models
 
 
 
+
 class Comment(models.Model):
     comment_id = models.AutoField(primary_key=True)
     film = models.ForeignKey('FilmBrief', models.DO_NOTHING, blank=True, null=True)
@@ -17,13 +18,11 @@ class Comment(models.Model):
     rating = models.IntegerField(blank=True, null=True)
     content = models.CharField(max_length=256, blank=True, null=True)
     release_time = models.DateField(blank=True, null=True)
+    user = models.ForeignKey('Users', models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'comment'
-
-
-
 
 
 
@@ -35,7 +34,6 @@ class FilmBrief(models.Model):
     release_time = models.DateField(blank=True, null=True)
     country = models.CharField(max_length=128, blank=True, null=True)
     length = models.CharField(max_length=64, blank=True, null=True)
-
 
     class Meta:
         managed = False
@@ -62,7 +60,6 @@ class FilmDetail(models.Model):
     box_office = models.CharField(max_length=128, blank=True, null=True)
     synopsis = models.CharField(max_length=256, blank=True, null=True)
 
-
     class Meta:
         managed = False
         db_table = 'film_detail'
@@ -74,6 +71,17 @@ class Member(models.Model):
     member_name = models.CharField(max_length=128, blank=True, null=True)
     member_type = models.CharField(max_length=64, blank=True, null=True)
     film_briefs = models.ManyToManyField(FilmBrief, through='FilmBriefMember')
+    
     class Meta:
         managed = False
         db_table = 'member'
+
+
+class Users(models.Model):
+    user_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=128, blank=True, null=True)
+    password = models.CharField(max_length=128, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'users'
