@@ -3,7 +3,7 @@ from django.urls import path, include, re_path
 from films import views
 
 urlpatterns = [
-    # 注册
-    path('index/', views.index, name='index'),
+    # 电影
+    path('category_movies/', views.category_movies, name='category_movies'),
 
 ]

@@ -15,22 +15,12 @@ Including another URLconf
 """
 
 from django.contrib import admin
-<<<<<<< HEAD
 from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/', include(('users.urls', 'users'), namespace='users'))
-=======
-from django.urls import path, include, re_path
-# from django.contrib.staticfiles.urls import static
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('users/', include(('users.urls', 'users'), namespace='users')),
     path('films/', include(('films.urls', 'films'), namespace='films')),
-    # path('users/', include(('users.urls', 'users'), namespace='users')),
-  #   path('tvshow/', include(('tvshow.urls', 'tvshow'), namespace='tvshow')),
- 	# path('',views.index)
+    path('tvshow/', include(('tvshow.urls', 'tvshow'), namespace='tvshow')),
+    ]
 
->>>>>>> 477b48fbd1757348f95819fb7f034b01a7973b9b
-]
